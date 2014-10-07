@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  CameraManager.h
 //  CameraDemo
 //
 //  Created by weirdln on 14-10-7.
 //  Copyright (c) 2014年 weirdln. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface ViewController : UIViewController
-
+@interface CameraManager : NSObject
 
 @end
-
