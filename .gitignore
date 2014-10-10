@@ -1,0 +1,14 @@
+*.DS_Store
+*.xccheckout
+
+*.xcbkptlist
+
+*.xcworkspacedata
+
+*.xcscheme
+
+*.xcuserstate
+
+.DS_Store
+
+.DS_Store

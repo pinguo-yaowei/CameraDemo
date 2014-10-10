@@ -14,6 +14,22 @@
 		5B9896C519E42831002D2A06 /* CameraDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9896C419E42831002D2A06 /* CameraDemoTests.m */; };
 		5B9896D619E42B1D002D2A06 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9896D519E42B1D002D2A06 /* CameraViewController.m */; };
 		5B9896D919E42B34002D2A06 /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9896D819E42B34002D2A06 /* CameraManager.m */; };
+		5BE19D9219E4E7A300DA8500 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9119E4E7A300DA8500 /* AVFoundation.framework */; };
+		5BE19D9419E4E7B100DA8500 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9319E4E7B100DA8500 /* ImageIO.framework */; };
+		5BE19D9619E4E7C000DA8500 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9519E4E7C000DA8500 /* CoreAudio.framework */; };
+		5BE19D9919E4E7D000DA8500 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9719E4E7D000DA8500 /* CoreMedia.framework */; };
+		5BE19D9A19E4E7D000DA8500 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9819E4E7D000DA8500 /* CoreVideo.framework */; };
+		5BE19E1219E526C100DA8500 /* btn_cam_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E0A19E526C100DA8500 /* btn_cam_pressed.png */; };
+		5BE19E1319E526C100DA8500 /* camera-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E0B19E526C100DA8500 /* camera-icon.png */; };
+		5BE19E1419E526C100DA8500 /* cancle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E0C19E526C100DA8500 /* cancle.png */; };
+		5BE19E1519E526C100DA8500 /* flash-auto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E0D19E526C100DA8500 /* flash-auto.png */; };
+		5BE19E1619E526C100DA8500 /* flash-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E0E19E526C100DA8500 /* flash-off.png */; };
+		5BE19E1719E526C100DA8500 /* flash-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E0F19E526C100DA8500 /* flash-on.png */; };
+		5BE19E1819E526C100DA8500 /* front-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E1019E526C100DA8500 /* front-camera.png */; };
+		5BE19E1919E526C100DA8500 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E1119E526C100DA8500 /* save.png */; };
+		5BE19E1E19E6690500DA8500 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E1C19E6690500DA8500 /* Main.storyboard */; };
+		5BE19E2619E674F600DA8500 /* CameraSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE19E2519E674F600DA8500 /* CameraSettingViewController.m */; };
+		5BE19E2819E67A5A00DA8500 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE19E2719E67A5A00DA8500 /* setting.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +57,24 @@
 		5B9896D519E42B1D002D2A06 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		5B9896D719E42B34002D2A06 /* CameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManager.h; sourceTree = "<group>"; };
 		5B9896D819E42B34002D2A06 /* CameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManager.m; sourceTree = "<group>"; };
+		5BE19D9119E4E7A300DA8500 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5BE19D9319E4E7B100DA8500 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		5BE19D9519E4E7C000DA8500 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		5BE19D9719E4E7D000DA8500 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		5BE19D9819E4E7D000DA8500 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		5BE19D9B19E4F9B500DA8500 /* CameraDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CameraDemo-Prefix.pch"; sourceTree = "<group>"; };
+		5BE19E0A19E526C100DA8500 /* btn_cam_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_cam_pressed.png; sourceTree = "<group>"; };
+		5BE19E0B19E526C100DA8500 /* camera-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon.png"; sourceTree = "<group>"; };
+		5BE19E0C19E526C100DA8500 /* cancle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancle.png; sourceTree = "<group>"; };
+		5BE19E0D19E526C100DA8500 /* flash-auto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash-auto.png"; sourceTree = "<group>"; };
+		5BE19E0E19E526C100DA8500 /* flash-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash-off.png"; sourceTree = "<group>"; };
+		5BE19E0F19E526C100DA8500 /* flash-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash-on.png"; sourceTree = "<group>"; };
+		5BE19E1019E526C100DA8500 /* front-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "front-camera.png"; sourceTree = "<group>"; };
+		5BE19E1119E526C100DA8500 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		5BE19E1D19E6690500DA8500 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5BE19E2419E674F600DA8500 /* CameraSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraSettingViewController.h; sourceTree = "<group>"; };
+		5BE19E2519E674F600DA8500 /* CameraSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraSettingViewController.m; sourceTree = "<group>"; };
+		5BE19E2719E67A5A00DA8500 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +82,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE19D9919E4E7D000DA8500 /* CoreMedia.framework in Frameworks */,
+				5BE19D9A19E4E7D000DA8500 /* CoreVideo.framework in Frameworks */,
+				5BE19D9619E4E7C000DA8500 /* CoreAudio.framework in Frameworks */,
+				5BE19D9419E4E7B100DA8500 /* ImageIO.framework in Frameworks */,
+				5BE19D9219E4E7A300DA8500 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +103,7 @@
 		5B98969C19E42831002D2A06 = {
 			isa = PBXGroup;
 			children = (
+				5BE19D9019E4E77800DA8500 /* Frameworks */,
 				5B9896A719E42831002D2A06 /* CameraDemo */,
 				5B9896C119E42831002D2A06 /* CameraDemoTests */,
 				5B9896A619E42831002D2A06 /* Products */,
@@ -86,11 +126,15 @@
 				5B9896AD19E42831002D2A06 /* AppDelegate.m */,
 				5B9896B519E42831002D2A06 /* Images.xcassets */,
 				5B9896B719E42831002D2A06 /* LaunchScreen.xib */,
+				5BE19E1C19E6690500DA8500 /* Main.storyboard */,
 				5B9896A819E42831002D2A06 /* Supporting Files */,
-				5B9896D419E42B1D002D2A06 /* CameraViewController.h */,
-				5B9896D519E42B1D002D2A06 /* CameraViewController.m */,
 				5B9896D719E42B34002D2A06 /* CameraManager.h */,
 				5B9896D819E42B34002D2A06 /* CameraManager.m */,
+				5B9896D419E42B1D002D2A06 /* CameraViewController.h */,
+				5B9896D519E42B1D002D2A06 /* CameraViewController.m */,
+				5BE19E2419E674F600DA8500 /* CameraSettingViewController.h */,
+				5BE19E2519E674F600DA8500 /* CameraSettingViewController.m */,
+				5BE19E0919E5259D00DA8500 /* Resources */,
 			);
 			path = CameraDemo;
 			sourceTree = "<group>";
@@ -100,6 +144,7 @@
 			children = (
 				5B9896A919E42831002D2A06 /* Info.plist */,
 				5B9896AA19E42831002D2A06 /* main.m */,
+				5BE19D9B19E4F9B500DA8500 /* CameraDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -119,6 +164,34 @@
 				5B9896C319E42831002D2A06 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5BE19D9019E4E77800DA8500 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BE19D9719E4E7D000DA8500 /* CoreMedia.framework */,
+				5BE19D9819E4E7D000DA8500 /* CoreVideo.framework */,
+				5BE19D9519E4E7C000DA8500 /* CoreAudio.framework */,
+				5BE19D9319E4E7B100DA8500 /* ImageIO.framework */,
+				5BE19D9119E4E7A300DA8500 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5BE19E0919E5259D00DA8500 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5BE19E2719E67A5A00DA8500 /* setting.png */,
+				5BE19E0A19E526C100DA8500 /* btn_cam_pressed.png */,
+				5BE19E0B19E526C100DA8500 /* camera-icon.png */,
+				5BE19E0C19E526C100DA8500 /* cancle.png */,
+				5BE19E0D19E526C100DA8500 /* flash-auto.png */,
+				5BE19E0E19E526C100DA8500 /* flash-off.png */,
+				5BE19E0F19E526C100DA8500 /* flash-on.png */,
+				5BE19E1019E526C100DA8500 /* front-camera.png */,
+				5BE19E1119E526C100DA8500 /* save.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +274,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE19E1219E526C100DA8500 /* btn_cam_pressed.png in Resources */,
+				5BE19E1619E526C100DA8500 /* flash-off.png in Resources */,
+				5BE19E1519E526C100DA8500 /* flash-auto.png in Resources */,
+				5BE19E1319E526C100DA8500 /* camera-icon.png in Resources */,
+				5BE19E1819E526C100DA8500 /* front-camera.png in Resources */,
+				5BE19E1E19E6690500DA8500 /* Main.storyboard in Resources */,
 				5B9896B919E42831002D2A06 /* LaunchScreen.xib in Resources */,
+				5BE19E1919E526C100DA8500 /* save.png in Resources */,
+				5BE19E2819E67A5A00DA8500 /* setting.png in Resources */,
+				5BE19E1419E526C100DA8500 /* cancle.png in Resources */,
 				5B9896B619E42831002D2A06 /* Images.xcassets in Resources */,
+				5BE19E1719E526C100DA8500 /* flash-on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9896D619E42B1D002D2A06 /* CameraViewController.m in Sources */,
+				5BE19E2619E674F600DA8500 /* CameraSettingViewController.m in Sources */,
 				5B9896AE19E42831002D2A06 /* AppDelegate.m in Sources */,
 				5B9896D919E42B34002D2A06 /* CameraManager.m in Sources */,
 				5B9896AB19E42831002D2A06 /* main.m in Sources */,
@@ -252,6 +336,14 @@
 				5B9896B819E42831002D2A06 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		5BE19E1C19E6690500DA8500 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BE19E1D19E6690500DA8500 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -337,7 +429,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CameraDemo/CameraDemo-Prefix.pch";
 				INFOPLIST_FILE = CameraDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -347,7 +443,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CameraDemo/CameraDemo-Prefix.pch";
 				INFOPLIST_FILE = CameraDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -406,6 +506,7 @@
 				5B9896CA19E42831002D2A06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B9896CB19E42831002D2A06 /* Build configuration list for PBXNativeTarget "CameraDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +515,7 @@
 				5B9896CD19E42831002D2A06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
