@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="0Dh-fs-j3I">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -44,11 +43,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="tuc-Mp-RHo">
-                                <rect key="frame" x="0.0" y="494" width="121" height="74"/>
+                                <rect key="frame" x="0.0" y="444" width="100" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1fT-tW-dlK">
-                                <rect key="frame" x="258" y="499" width="46" height="30"/>
+                                <rect key="frame" x="276" y="499" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="setting.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,7 +87,6 @@
         <!--Setting-->
         <scene sceneID="W0b-ML-NYV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gc8-ek-Gkq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Setting" id="nAW-7f-woM" customClass="CameraSettingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aSb-Zw-6Jf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -97,6 +95,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="LE8-WY-Lu4"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gc8-ek-Gkq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="843" y="222"/>
         </scene>
@@ -126,7 +125,7 @@
         <image name="btn_cam_pressed.png" width="136" height="136"/>
         <image name="flash-off.png" width="41" height="50"/>
         <image name="front-camera.png" width="93" height="46"/>
-        <image name="setting.png" width="66" height="66"/>
+        <image name="setting.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

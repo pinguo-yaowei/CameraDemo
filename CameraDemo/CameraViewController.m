@@ -33,6 +33,7 @@
     flashSetting = @{@(0) : @"flash-off.png",
                      @(1) : @"flash-on.png",
                      @(2) : @"flash-auto.png",};
+    self.view.autoresizesSubviews = YES;
     
 //    UIButton *flashBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 20, 25)];
 //    flashBtn.tag = 0;
@@ -99,7 +100,6 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-//    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
     [cameraManager changePreviewOrientation:toInterfaceOrientation];
 }
 
@@ -161,6 +161,15 @@
 // 完成拍照的处理
 - (void)finishCapturePicture:(UIImage *)image
 {
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        self.preImageView.frame = CGRectMake(0, screenSize.width - 100, 120, 100);
+    }
+    else
+    {
+        self.preImageView.frame = CGRectMake(0, screenSize.height - 120, 100, 120);
+    }
     self.preImageView.image = image;
 }
 

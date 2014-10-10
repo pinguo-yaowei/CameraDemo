@@ -52,7 +52,7 @@
     device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     // 监听自动对焦
-    [device addObserver:self forKeyPath:@"adjustingFocus" options:NSKeyValueObservingOptionNew context:nil];
+//    [device addObserver:self forKeyPath:@"adjustingFocus" options:NSKeyValueObservingOptionNew context:nil];
     
     deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
     if ([session canAddInput:deviceInput])
@@ -123,7 +123,20 @@
 
 - (void)changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    NSLog(@"%@",NSStringFromCGRect(preview.frame));
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    float max = MAX(screenSize.height, screenSize.width);
+    float min = MIN(screenSize.height, screenSize.width);
+    
+    if(interfaceOrientation == UIInterfaceOrientationPortrait
+       ||interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+    {
+        preview.frame = CGRectMake(0, 0, min, max);
+    }
+    else
+    {
+        preview.frame = CGRectMake(0, 0, max, min);
+    }
+    
     if (preview)
     {
         [[preview connection] setVideoOrientation:(AVCaptureVideoOrientation)interfaceOrientation];
@@ -147,10 +160,15 @@
         if (videoConnection) { break; }
     }
     
+    if ([videoConnection isVideoOrientationSupported])
+    {
+        [videoConnection setVideoOrientation:(AVCaptureVideoOrientation)[UIDevice currentDevice].orientation];
+    }
+
     //get UIImage
     [captureOutput captureStillImageAsynchronouslyFromConnection:videoConnection
                                                completionHandler:^(CMSampleBufferRef imageSampleBuffer, NSError *error)
-    {
+     {
          CFDictionaryRef exifAttachments = CMGetAttachment(imageSampleBuffer, kCGImagePropertyExifDictionary, NULL);
          if (exifAttachments) {
              // Do something with the attachments.
@@ -158,13 +176,11 @@
          
          // Continue as appropriate.
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+         
          UIImage *t_image = [UIImage imageWithData:imageData];
-         
-         UIImage *image = [[UIImage alloc]initWithCGImage:t_image.CGImage scale:1.0
-                                              orientation:(UIImageOrientation)preview.connection.videoOrientation];
-         
+         NSLog(@"image:%d", t_image.imageOrientation);
          if ([self.cameraDelegate respondsToSelector:@selector(finishCapturePicture:)])
-             [self.cameraDelegate finishCapturePicture:image];
+             [self.cameraDelegate finishCapturePicture:t_image];
      }];
 }
 
