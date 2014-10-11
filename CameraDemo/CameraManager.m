@@ -30,6 +30,10 @@
         [self setupCaptureSession];
         
         [self setupImageOutput];
+        
+//        [self setupVideoOutput];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSetting:) name:@"CameraSettingChanged" object:nil];
     }
     return self;
 }
@@ -37,6 +41,13 @@
 - (void)dealloc
 {
     [device removeObserver:self forKeyPath:@"adjustingFocus"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CameraSettingChanged" object:nil];
+}
+
+- (void)changeSetting:(NSNotification*)notification
+{
+    NSLog(@"changed setting is %@",[notification userInfo]);
+    [self setCameraSetting:notification.userInfo];
 }
 
 #pragma mark -- setup
@@ -93,6 +104,7 @@
     // 视频输出
     session.sessionPreset = AVCaptureSessionPresetMedium;
     videoOutput = [[AVCaptureVideoDataOutput alloc] init];
+
     if ([session canAddOutput:videoOutput])
     {
         [session addOutput:videoOutput];
@@ -127,7 +139,7 @@
     float max = MAX(screenSize.height, screenSize.width);
     float min = MIN(screenSize.height, screenSize.width);
     
-    if(interfaceOrientation == UIInterfaceOrientationPortrait
+    if (interfaceOrientation == UIInterfaceOrientationPortrait
        ||interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
     {
         preview.frame = CGRectMake(0, 0, min, max);
@@ -136,10 +148,19 @@
     {
         preview.frame = CGRectMake(0, 0, max, min);
     }
-    
+
     if (preview)
     {
         [[preview connection] setVideoOrientation:(AVCaptureVideoOrientation)interfaceOrientation];
+    }
+}
+
+- (void)changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation newView:(UIView *)view
+{
+    if (preview)
+    {
+        [[preview connection] setVideoOrientation:(AVCaptureVideoOrientation)interfaceOrientation];
+        preview.frame = view.bounds;
     }
 }
 
@@ -160,6 +181,12 @@
         if (videoConnection) { break; }
     }
     
+    if (videoConnection == nil)
+    {
+        NSLog(@"no connection");
+        return;
+    }
+    
     if ([videoConnection isVideoOrientationSupported])
     {
         [videoConnection setVideoOrientation:(AVCaptureVideoOrientation)[UIDevice currentDevice].orientation];
@@ -178,7 +205,6 @@
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          
          UIImage *t_image = [UIImage imageWithData:imageData];
-         NSLog(@"image:%d", t_image.imageOrientation);
          if ([self.cameraDelegate respondsToSelector:@selector(finishCapturePicture:)])
              [self.cameraDelegate finishCapturePicture:t_image];
      }];
@@ -319,7 +345,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 // 切换闪光灯
-- (void)switchFlashMode:(AVCaptureFlashMode)newMode
+- (void)setupFlashMode:(AVCaptureFlashMode)newMode
 {
     if ([device hasFlash] && [device isFlashModeSupported:newMode])
     {
@@ -331,9 +357,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 // 设置相机的聚焦方式和曝光方式
-- (void)switchFocusMode:(AVCaptureFocusMode)focusMode
-             exposeMode:(AVCaptureExposureMode)exposeMode
-                atPoint:(CGPoint)point;
+- (void)setupFocusMode:(AVCaptureFocusMode)focusMode
+            exposeMode:(AVCaptureExposureMode)exposeMode
+               atPoint:(CGPoint)point
 {
     NSError *error = nil;
     if ([device lockForConfiguration:&error])
@@ -354,6 +380,62 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
 }
 
+//  设置相机的分辨率
+- (void)setupPixelType:(id)pixelType
+{
+//    kCVPixelBufferPixelFormatTypeKey
+//    kCVPixelBufferWidthKey
+//    kCVPixelBufferHeightKey
+    [session beginConfiguration];
+    
+    if ([session canSetSessionPreset:pixelType])
+    {
+        session.sessionPreset = pixelType;
+    }
+    [session commitConfiguration];
+}
+
+//  设置相机白平衡模式
+- (void)setupWhiteBalanceMode:(AVCaptureWhiteBalanceMode)mode
+{
+    NSError *error = nil;
+    if ([device lockForConfiguration:&error])
+    {
+        if ([device isWhiteBalanceModeSupported:mode] )
+        {
+            [device setWhiteBalanceMode:mode];
+        }
+        
+        [device unlockForConfiguration];
+    }
+}
+
+//  设置视频帧率
+- (void)setupFps:(float)fps
+{
+//   [device setActiveVideoMaxFrameDuration:<#(CMTime)#>]
+}
+
+//  设置iso值
+- (void)setupIsoValue:(float)iso
+{
+    
+}
+
+
+- (void)setCameraSetting:(NSDictionary *)cameraSetting
+{
+    [self setupPixelType:[cameraSetting objectForKey:@"pixelType"]];
+    [self setupWhiteBalanceMode:(AVCaptureWhiteBalanceMode)[[cameraSetting objectForKey:@"pixelType"] integerValue]];
+}
+
+- (NSDictionary *)cameraSetting
+{
+    NSDictionary *setting =@{@"pixelType" : session.sessionPreset,
+                                 @"whiteBalanceMode" : @(device.whiteBalanceMode)};
+    
+    return setting;
+}
 
 
 

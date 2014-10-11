@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     flashSetting = @{@(0) : @"flash-off.png",
                      @(1) : @"flash-on.png",
                      @(2) : @"flash-auto.png",};
@@ -69,6 +70,12 @@
     [cameraManager setupPreView:self.view];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -103,6 +110,11 @@
     [cameraManager changePreviewOrientation:toInterfaceOrientation];
 }
 
+//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+//{
+//    [cameraManager changePreviewOrientation:[self interfaceOrientation] newView:self.view];
+//}
+
 
 - (IBAction)btnAction:(UIButton *)sender
 {
@@ -116,7 +128,7 @@
                 flashIndex = 0;
             UIImage *newImage = [UIImage imageNamed:[flashSetting objectForKey:@(flashIndex)]];
             [sender setBackgroundImage:newImage forState:UIControlStateNormal];
-            [cameraManager switchFlashMode:flashIndex];
+            [cameraManager setupFlashMode:flashIndex];
 
         }
             break;
@@ -132,7 +144,9 @@
             break;
         case 3:
         {
+            NSDictionary *currentDict = [cameraManager cameraSetting];
             CameraSettingViewController *settingViewController = [[CameraSettingViewController alloc] init];
+            [settingViewController setupCurrentSetting:currentDict];
             [self.navigationController pushViewController:settingViewController animated:YES];
         }
             break;
@@ -144,7 +158,7 @@
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
 {
     CGPoint touchPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
-    [cameraManager switchFocusMode:AVCaptureFocusModeAutoFocus
+    [cameraManager setupFocusMode:AVCaptureFocusModeAutoFocus
                         exposeMode:AVCaptureExposureModeAutoExpose
                            atPoint:touchPoint];
 }

@@ -10,4 +10,6 @@
 
 @interface CameraSettingViewController : UIViewController
 
+- (void)setupCurrentSetting:(NSDictionary *)currentSetting;
+
 @end

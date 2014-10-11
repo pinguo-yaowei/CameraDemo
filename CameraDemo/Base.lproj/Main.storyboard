@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="0Dh-fs-j3I">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -53,7 +54,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnAction:" destination="qdj-cq-tX3" eventType="touchUpInside" id="SCs-kh-gv2"/>
+                                    <action selector="btnAction:" destination="qdj-cq-tX3" eventType="touchUpInside" id="0oi-yF-vZy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -63,13 +64,8 @@
                             <outletCollection property="gestureRecognizers" destination="5cv-z2-G0c" appends="YES" id="fx9-OB-M9B"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="ceS-fr-Cvd">
-                        <barButtonItem key="rightBarButtonItem" title="Setting" id="L0H-tG-ST8">
-                            <connections>
-                                <segue destination="nAW-7f-woM" kind="push" id="6Ik-Zw-qkc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="ceS-fr-Cvd"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="preImageView" destination="tuc-Mp-RHo" id="8H0-5a-Z1B"/>
                     </connections>
@@ -93,16 +89,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LE8-WY-Lu4"/>
+                    <navigationItem key="navigationItem" title="Setting" id="LE8-WY-Lu4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc8-ek-Gkq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="843" y="222"/>
+            <point key="canvasLocation" x="915" y="222"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AuC-L9-Y8O">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="0Dh-fs-j3I" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Dh-fs-j3I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RdF-Fc-VHB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
