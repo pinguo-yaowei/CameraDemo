@@ -10,6 +10,11 @@
 
 @interface CameraSettingViewController : UIViewController
 
+/**
+ *  设置当前设置状态，用于初始化现实
+ *
+ *  @param currentSetting 设置
+ */
 - (void)setupCurrentSetting:(NSDictionary *)currentSetting;
 
 @end

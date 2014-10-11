@@ -92,6 +92,7 @@
 }
 
 
+#pragma mark -- UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
     return [settingDict count];
@@ -138,6 +139,7 @@
     [settingTableView reloadData];
 }
 
+// 完成按钮触发，给相机设置新的参数并回到相机界面
 - (void)settingDone:(id)sender
 {
     NSDictionary *setDoneDict =

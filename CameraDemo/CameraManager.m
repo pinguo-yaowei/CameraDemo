@@ -422,7 +422,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
 }
 
-
+/**
+ *  重写cameraSetting方法，用于获取当前设置和设置新的参数
+ *
+ *  @param cameraSetting 当前新的设置参数
+ */
 - (void)setCameraSetting:(NSDictionary *)cameraSetting
 {
     [self setupPixelType:[cameraSetting objectForKey:@"pixelType"]];
