@@ -436,7 +436,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (NSDictionary *)cameraSetting
 {
     NSDictionary *setting =@{@"pixelType" : session.sessionPreset,
-                                 @"whiteBalanceMode" : @(device.whiteBalanceMode)};
+                             @"whiteBalanceMode" : @(device.whiteBalanceMode)};
     
     return setting;
 }

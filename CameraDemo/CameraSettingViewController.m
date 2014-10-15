@@ -115,8 +115,9 @@
     }
     NSDictionary * dict = [settingDict objectForKey:@(indexPath.row)];
     id currentSetting = [dict objectForKey:@"currentSetting"];
-    NSString *str = [currentSetting isKindOfClass:[NSString class]]? currentSetting : [NSString stringWithFormat:@"%@",currentSetting];
-    
+    NSString *str = [currentSetting isKindOfClass:[NSString class]]?
+                    currentSetting : [NSString stringWithFormat:@"%@",currentSetting];
+
     cell.textLabel.text = [dict objectForKey:@"setName"];
     cell.detailTextLabel.text = str;
     

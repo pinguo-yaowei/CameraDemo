@@ -80,21 +80,6 @@
             </objects>
             <point key="canvasLocation" x="343" y="222"/>
         </scene>
-        <!--Setting-->
-        <scene sceneID="W0b-ML-NYV">
-            <objects>
-                <viewController title="Setting" id="nAW-7f-woM" customClass="CameraSettingViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aSb-Zw-6Jf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Setting" id="LE8-WY-Lu4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gc8-ek-Gkq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="915" y="222"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="AuC-L9-Y8O">
             <objects>

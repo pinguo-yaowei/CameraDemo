@@ -159,8 +159,8 @@
 {
     CGPoint touchPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
     [cameraManager setupFocusMode:AVCaptureFocusModeAutoFocus
-                        exposeMode:AVCaptureExposureModeAutoExpose
-                           atPoint:touchPoint];
+                       exposeMode:AVCaptureExposureModeAutoExpose
+                          atPoint:touchPoint];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
@@ -176,7 +176,8 @@
 - (void)finishCapturePicture:(UIImage *)image
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft
+        || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
     {
         self.preImageView.frame = CGRectMake(0, screenSize.width - 100, 120, 100);
     }
