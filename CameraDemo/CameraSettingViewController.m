@@ -69,10 +69,12 @@
     [currentSetting enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL *stop) {
         if ([key isEqualToString:@"pixelType"])
         {
+            [[settingDict objectForKey:@(0)] setObject:@([[allSetOptions objectForKey:@(0)] indexOfObject:obj]) forKey:@"currentIndex"];
             [[settingDict objectForKey:@(0)] setObject:obj forKey:@"currentSetting"];
         }
         else if ([key isEqualToString:@"whiteBalanceMode"])
         {
+            [[settingDict objectForKey:@(1)] setObject:@([[allSetOptions objectForKey:@(1)] indexOfObject:obj]) forKey:@"currentIndex"];
             [[settingDict objectForKey:@(1)] setObject:obj forKey:@"currentSetting"];
         }
     }];

@@ -18,6 +18,9 @@
     AVCaptureStillImageOutput   *captureOutput;
     AVCaptureVideoDataOutput *videoOutput;
 }
+
+@property (nonatomic, weak) UIView * previewContainerView;
+
 @end
 
 @implementation CameraManager
@@ -126,44 +129,22 @@
     if (!session || !view)
         return;
     
+    self.previewContainerView = view;
     preview = [AVCaptureVideoPreviewLayer layerWithSession:session];
     preview.frame = view.bounds;
     preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//    [view.layer addSublayer:preview];
-    [view.layer insertSublayer:preview below:[[view.layer sublayers] objectAtIndex:0]];
+//    [self.previewContainerView.layer addSublayer:preview];
+    [self.previewContainerView.layer insertSublayer:preview below:[[view.layer sublayers] objectAtIndex:0]];
 }
 
 - (void)changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    float max = MAX(screenSize.height, screenSize.width);
-    float min = MIN(screenSize.height, screenSize.width);
-    
-    if (interfaceOrientation == UIInterfaceOrientationPortrait
-       ||interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-    {
-        preview.frame = CGRectMake(0, 0, min, max);
-    }
-    else
-    {
-        preview.frame = CGRectMake(0, 0, max, min);
-    }
-
-    if (preview)
+    if (preview && self.previewContainerView)
     {
         [[preview connection] setVideoOrientation:(AVCaptureVideoOrientation)interfaceOrientation];
+        preview.frame = self.previewContainerView.bounds;
     }
 }
-
-- (void)changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation newView:(UIView *)view
-{
-    if (preview)
-    {
-        [[preview connection] setVideoOrientation:(AVCaptureVideoOrientation)interfaceOrientation];
-        preview.frame = view.bounds;
-    }
-}
-
 
 
 #pragma mark -- output
@@ -203,10 +184,18 @@
          
          // Continue as appropriate.
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+//         NSLog(@"origin jpeg image size = %lf Mb",[imageData length] / (1024.0 * 1024.0));
+
+         NSString *filePath = [NSObject getDocumentsPath:@"test.jpg"];
+         if([imageData writeToFile:filePath atomically:YES])
+         {
+         if ([self.cameraDelegate respondsToSelector:@selector(finishSavePictureToPath:)])
+             [self.cameraDelegate finishSavePictureToPath:filePath];
+         }
          
-         UIImage *t_image = [UIImage imageWithData:imageData];
-         if ([self.cameraDelegate respondsToSelector:@selector(finishCapturePicture:)])
-             [self.cameraDelegate finishCapturePicture:t_image];
+//         UIImage *t_image = [UIImage imageWithData:imageData scale:1.0f];
+//         if ([self.cameraDelegate respondsToSelector:@selector(finishCapturePicture:)])
+//             [self.cameraDelegate finishCapturePicture:t_image];
      }];
 }
 

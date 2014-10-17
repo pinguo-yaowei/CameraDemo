@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "UIImageTools.h"
 
 @protocol CameraManagerDelegate;
 @interface CameraManager : NSObject
@@ -45,8 +46,6 @@
  *  @param interfaceOrientation 新的方向
  */
 - (void)changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation;
-
-- (void)changePreviewOrientation:(UIInterfaceOrientation)interfaceOrientation newView:(UIView *)view;
 
 /**
  *  拍照操作
@@ -110,11 +109,27 @@
 
 @protocol CameraManagerDelegate <NSObject>
 
+
+@optional
 /**
  *  完成拍照后的回调
  *
  *  @param image 拍照获取到的图片
  */
 - (void)finishCapturePicture:(UIImage *)image;
+
+/**
+ *  完成拍照后返回data
+ *
+ *  @param imageData image的data
+ */
+- (void)finishCapturePictureData:(NSData *)imageData;
+
+/**
+ *  完成拍照并直接讲照片保存到本地文档中
+ *
+ *  @param filePath data所在的路径
+ */
+- (void)finishSavePictureToPath:(NSString *)filePath;
 
 @end

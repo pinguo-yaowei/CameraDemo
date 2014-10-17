@@ -23,6 +23,10 @@
       completionBlock:(void (^)(UIImage *result))completionBlock
          failureBlock:(void (^)(NSError *error))failureBlock;
 
++ (NSData *)convertToWebP:(UIImage *)image webPConfig:(WebPConfig)config alpha:(CGFloat)alpha  preset:(WebPPreset)preset error:(NSError **)error;
++ (void)imageToWebP:(UIImage *)image webPConfig:(WebPConfig)config alpha:(CGFloat)alpha preset:(WebPPreset)preset completionBlock:(void (^)(NSData *result))completionBlock failureBlock:(void (^)(NSError *error))failureBlock;
+
+
 - (UIImage *)imageByApplyingAlpha:(CGFloat)alpha;
 
 @end

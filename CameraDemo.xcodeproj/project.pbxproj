@@ -14,6 +14,11 @@
 		5B9896C519E42831002D2A06 /* CameraDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9896C419E42831002D2A06 /* CameraDemoTests.m */; };
 		5B9896D619E42B1D002D2A06 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9896D519E42B1D002D2A06 /* CameraViewController.m */; };
 		5B9896D919E42B34002D2A06 /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9896D819E42B34002D2A06 /* CameraManager.m */; };
+		5BA0F57919EE4187002B89D4 /* UIImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0F57819EE4187002B89D4 /* UIImageTools.m */; };
+		5BA0F57C19EE96FE002B89D4 /* CameraCaptureShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0F57B19EE96FE002B89D4 /* CameraCaptureShowViewController.m */; };
+		5BA0F57F19EFCDB3002B89D4 /* WebPEncodeSeetingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0F57E19EFCDB3002B89D4 /* WebPEncodeSeetingView.m */; };
+		5BA0F58219F0FA82002B89D4 /* png-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BA0F58019F0FA82002B89D4 /* png-1.png */; };
+		5BA0F58319F0FA82002B89D4 /* jpg-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BA0F58119F0FA82002B89D4 /* jpg-1.jpg */; };
 		5BE19D9219E4E7A300DA8500 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9119E4E7A300DA8500 /* AVFoundation.framework */; };
 		5BE19D9419E4E7B100DA8500 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9319E4E7B100DA8500 /* ImageIO.framework */; };
 		5BE19D9619E4E7C000DA8500 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE19D9519E4E7C000DA8500 /* CoreAudio.framework */; };
@@ -60,6 +65,14 @@
 		5B9896D519E42B1D002D2A06 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		5B9896D719E42B34002D2A06 /* CameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManager.h; sourceTree = "<group>"; };
 		5B9896D819E42B34002D2A06 /* CameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManager.m; sourceTree = "<group>"; };
+		5BA0F57719EE4187002B89D4 /* UIImageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageTools.h; sourceTree = "<group>"; };
+		5BA0F57819EE4187002B89D4 /* UIImageTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageTools.m; sourceTree = "<group>"; };
+		5BA0F57A19EE96FE002B89D4 /* CameraCaptureShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCaptureShowViewController.h; sourceTree = "<group>"; };
+		5BA0F57B19EE96FE002B89D4 /* CameraCaptureShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCaptureShowViewController.m; sourceTree = "<group>"; };
+		5BA0F57D19EFCDB3002B89D4 /* WebPEncodeSeetingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPEncodeSeetingView.h; sourceTree = "<group>"; };
+		5BA0F57E19EFCDB3002B89D4 /* WebPEncodeSeetingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPEncodeSeetingView.m; sourceTree = "<group>"; };
+		5BA0F58019F0FA82002B89D4 /* png-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "png-1.png"; sourceTree = "<group>"; };
+		5BA0F58119F0FA82002B89D4 /* jpg-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jpg-1.jpg"; sourceTree = "<group>"; };
 		5BE19D9119E4E7A300DA8500 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5BE19D9319E4E7B100DA8500 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		5BE19D9519E4E7C000DA8500 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -137,6 +150,7 @@
 		5B9896A719E42831002D2A06 /* CameraDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5BE19E0919E5259D00DA8500 /* Resources */,
 				5B9896AC19E42831002D2A06 /* AppDelegate.h */,
 				5B9896AD19E42831002D2A06 /* AppDelegate.m */,
 				5B9896B519E42831002D2A06 /* Images.xcassets */,
@@ -149,7 +163,12 @@
 				5B9896D519E42B1D002D2A06 /* CameraViewController.m */,
 				5BE19E2419E674F600DA8500 /* CameraSettingViewController.h */,
 				5BE19E2519E674F600DA8500 /* CameraSettingViewController.m */,
-				5BE19E0919E5259D00DA8500 /* Resources */,
+				5BA0F57719EE4187002B89D4 /* UIImageTools.h */,
+				5BA0F57819EE4187002B89D4 /* UIImageTools.m */,
+				5BA0F57A19EE96FE002B89D4 /* CameraCaptureShowViewController.h */,
+				5BA0F57B19EE96FE002B89D4 /* CameraCaptureShowViewController.m */,
+				5BA0F57D19EFCDB3002B89D4 /* WebPEncodeSeetingView.h */,
+				5BA0F57E19EFCDB3002B89D4 /* WebPEncodeSeetingView.m */,
 			);
 			path = CameraDemo;
 			sourceTree = "<group>";
@@ -197,6 +216,8 @@
 		5BE19E0919E5259D00DA8500 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BA0F58019F0FA82002B89D4 /* png-1.png */,
+				5BA0F58119F0FA82002B89D4 /* jpg-1.jpg */,
 				5BE19E2719E67A5A00DA8500 /* setting.png */,
 				5BE19E0A19E526C100DA8500 /* btn_cam_pressed.png */,
 				5BE19E0B19E526C100DA8500 /* camera-icon.png */,
@@ -294,10 +315,12 @@
 			files = (
 				5BE19E1219E526C100DA8500 /* btn_cam_pressed.png in Resources */,
 				5BE19E1619E526C100DA8500 /* flash-off.png in Resources */,
+				5BA0F58319F0FA82002B89D4 /* jpg-1.jpg in Resources */,
 				5BE19E1519E526C100DA8500 /* flash-auto.png in Resources */,
 				5BE19E1319E526C100DA8500 /* camera-icon.png in Resources */,
 				5BE19E1819E526C100DA8500 /* front-camera.png in Resources */,
 				5BE19E1E19E6690500DA8500 /* Main.storyboard in Resources */,
+				5BA0F58219F0FA82002B89D4 /* png-1.png in Resources */,
 				5B9896B919E42831002D2A06 /* LaunchScreen.xib in Resources */,
 				5BE19E1919E526C100DA8500 /* save.png in Resources */,
 				5BE19E2819E67A5A00DA8500 /* setting.png in Resources */,
@@ -354,11 +377,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA0F57F19EFCDB3002B89D4 /* WebPEncodeSeetingView.m in Sources */,
 				5B9896D619E42B1D002D2A06 /* CameraViewController.m in Sources */,
 				5BE19E2619E674F600DA8500 /* CameraSettingViewController.m in Sources */,
 				5B9896AE19E42831002D2A06 /* AppDelegate.m in Sources */,
 				5B9896D919E42B34002D2A06 /* CameraManager.m in Sources */,
 				5B9896AB19E42831002D2A06 /* main.m in Sources */,
+				5BA0F57919EE4187002B89D4 /* UIImageTools.m in Sources */,
+				5BA0F57C19EE96FE002B89D4 /* CameraCaptureShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +510,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xu Hao (ACJKFKYC2S)";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CameraDemo/CameraDemo-Prefix.pch";
 				INFOPLIST_FILE = CameraDemo/Info.plist;
@@ -502,6 +529,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xu Hao (ACJKFKYC2S)";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CameraDemo/CameraDemo-Prefix.pch";
 				INFOPLIST_FILE = CameraDemo/Info.plist;

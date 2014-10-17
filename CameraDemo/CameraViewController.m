@@ -9,6 +9,8 @@
 #import "CameraViewController.h"
 #import "CameraManager.h"
 #import "CameraSettingViewController.h"
+#import "CameraCaptureShowViewController.h"
+
 @interface CameraViewController ()<CameraManagerDelegate>
 {
     CameraManager *cameraManager;
@@ -66,6 +68,7 @@
     
     
     cameraManager = [[CameraManager alloc] init];
+    [cameraManager switchCamera];
     cameraManager.cameraDelegate = self;
     [cameraManager setupPreView:self.view];
 }
@@ -93,6 +96,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -- rotate相关
 - (BOOL)shouldAutorotate
 {
     // Disable autorotation of the interface when recording is in progress.
@@ -104,15 +108,19 @@
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//    [cameraManager changePreviewOrientation:toInterfaceOrientation];
+//}
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [cameraManager changePreviewOrientation:toInterfaceOrientation];
+    [cameraManager changePreviewOrientation:[self interfaceOrientation]];
 }
 
-//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 //{
-//    [cameraManager changePreviewOrientation:[self interfaceOrientation] newView:self.view];
+//    [cameraManager changePreviewOrientation:[self interfaceOrientation]];
 //}
 
 
@@ -175,6 +183,44 @@
 // 完成拍照的处理
 - (void)finishCapturePicture:(UIImage *)image
 {
+//    [self displayImage:image];
+//    return;
+//    image = [UIImage imageNamed:@"btn_cam_pressed"];
+    NSDate *beforeDate = [NSDate date];
+    
+//    NSLog(@"%@ \t %.0f",[UIImage getTimeNow],[[NSDate date] timeIntervalSince1970]*1000);
+    NSLog(@"origin jpeg image size = %lf Mb。",[UIImageJPEGRepresentation(image, 1.0) length] / (1024.0 * 1024.0));
+
+    
+    NSLog(@"begin  convert image to webp!");
+    [UIImage imageToWebP:image quality:0 alpha:1 preset:WEBP_PRESET_DEFAULT completionBlock:^(NSData *result) {
+        NSLog(@"finish convert,image size = %f Mb",[result length] / (1024 * 1024.0));
+        NSLog(@"it take time : %.0f ms",[[NSDate date] timeIntervalSinceDate:beforeDate]*1000);
+        
+        NSString *filePath = [NSObject getDocumentsPath:@"test.webp"];
+        if([result writeToFile:filePath atomically:YES])
+        {
+            [self finishSavePictureToPath:filePath];
+        }
+    }
+            failureBlock:^(NSError *error)
+     {
+         
+     }];
+}
+
+- (void)finishSavePictureToPath:(NSString *)filePath
+{
+    CameraCaptureShowViewController *showViewController = [[CameraCaptureShowViewController alloc] init];
+    [self.navigationController pushViewController:showViewController animated:YES];
+    [showViewController setOriginImagePath:filePath];
+}
+
+- (void)displayImage:(UIImage *)image
+{
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    NSLog(@"finish image data size = %f",[imageData length] / (1024 * 1024.0));
+    
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft
         || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
@@ -187,9 +233,6 @@
     }
     self.preImageView.image = image;
 }
-
-
-
 
 
 /*

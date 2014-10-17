@@ -11,20 +11,18 @@
 // This gets called when the UIImage gets collected and frees the underlying image.
 static void free_image_data(void *info, const void *data, size_t size)
 {
-    if(info != NULL)
-        WebPFreeDecBuffer(&(((WebPDecoderConfig *)info)->output));
-    else
-        free((void *)data);
+//    if(info != NULL)
+//        WebPFreeDecBuffer(&(((WebPDecoderConfig *)info)->output));
+//    else
+//        free((void *)data);
 }
 
 @implementation UIImage (WebP)
 
 #pragma mark - Private methods
 
-+ (NSData *)convertToWebP:(UIImage *)image quality:(CGFloat)quality alpha:(CGFloat)alpha preset:(WebPPreset)preset error:(NSError **)error
++ (NSData *)convertToWebP:(UIImage *)image webPConfig:(WebPConfig)config alpha:(CGFloat)alpha  preset:(WebPPreset)preset error:(NSError **)error
 {
-    NSLog(@"WebP Encoder Version: %@", [self version:WebPGetEncoderVersion()]);
-    
     if (alpha < 1) {
         image = [self webPImage:image withAlpha:alpha];
     }
@@ -40,8 +38,8 @@ static void free_image_data(void *info, const void *data, size_t size)
     
     uint8_t *webPImageData = (uint8_t *)CFDataGetBytePtr(webPImageDatRef);
     
-    WebPConfig config;
-    if (!WebPConfigPreset(&config, preset, quality)) {
+//    WebPConfig config;
+    if (!WebPConfigPreset(&config, preset, config.quality)) {
         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
         [errorDetail setValue:@"Configuration preset failed to initialize." forKey:NSLocalizedDescriptionKey];
         if(error != NULL)
@@ -93,9 +91,17 @@ static void free_image_data(void *info, const void *data, size_t size)
     return webPFinalData;
 }
 
+
++ (NSData *)convertToWebP:(UIImage *)image quality:(CGFloat)quality alpha:(CGFloat)alpha preset:(WebPPreset)preset error:(NSError **)error
+{
+    WebPConfig config;
+    config.quality = quality;
+    return [[self class]convertToWebP:image webPConfig:config alpha:alpha preset:preset error:error];
+}
+
 + (UIImage *)convertFromWebP:(NSString *)filePath error:(NSError **)error
 {
-    NSLog(@"WebP Decoder Version: %@", [self version:WebPGetDecoderVersion()]);
+//    NSLog(@"WebP Decoder Version: %@", [self version:WebPGetDecoderVersion()]);
     
     // If passed `filepath` is invalid, return nil to caller and log error in console
     NSError *dataError = nil;;
@@ -142,7 +148,9 @@ static void free_image_data(void *info, const void *data, size_t size)
     }
     
     // Construct UIImage from the decoded RGBA value array
-    CGDataProviderRef provider = CGDataProviderCreateWithData(&config, config.output.u.RGBA.rgba, config.options.scaled_width  * config.options.scaled_height * 4, free_image_data);
+    uint8_t *data = WebPDecodeRGBA([imgData bytes], [imgData length], &width, &height);
+    CGDataProviderRef provider = CGDataProviderCreateWithData(&config, data, config.options.scaled_width  * config.options.scaled_height * 4, free_image_data);
+    
     
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
     CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault |kCGImageAlphaLast;
@@ -195,6 +203,37 @@ static void free_image_data(void *info, const void *data, size_t size)
         if(webPImage) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completionBlock(webPImage);
+            });
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failureBlock(error);
+            });
+        }
+    });
+}
+
++ (void)imageToWebP:(UIImage *)image webPConfig:(WebPConfig)config alpha:(CGFloat)alpha preset:(WebPPreset)preset completionBlock:(void (^)(NSData *result))completionBlock failureBlock:(void (^)(NSError *error))failureBlock
+{
+    NSAssert(image != nil, @"imageToWebP:quality:alpha:completionBlock:failureBlock image cannot be nil");
+    NSAssert(config.quality >= 0 && config.quality <= 100,
+             @"imageToWebP:quality:alpha:completionBlock:failureBlock quality has to be [0, 100]");
+    NSAssert(alpha >= 0 && alpha <= 1, @"imageToWebP:quality:alpha:completionBlock:failureBlock alpha has to be [0, 1]");
+    NSAssert(completionBlock != nil, @"imageToWebP:quality:alpha:completionBlock:failureBlock completionBlock cannot be nil");
+    NSAssert(completionBlock != nil, @"imageToWebP:quality:alpha:completionBlock:failureBlock failureBlock block cannot be nil");
+    
+    // Create dispatch_queue_t for encoding WebP concurrently
+    dispatch_queue_t toWebPQueue = dispatch_queue_create("com.seanooi.ioswebp.towebp", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(toWebPQueue, ^{
+        
+        NSError *error = nil;
+        NSData *webPFinalData = [self convertToWebP:image webPConfig:config alpha:alpha preset:preset error:&error];
+        
+        // Return results to caller on main thread in completion block is `webPFinalData` != nil
+        // Else return in failure block
+        if(!error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionBlock(webPFinalData);
             });
         }
         else {
